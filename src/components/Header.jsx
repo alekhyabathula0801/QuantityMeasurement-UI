@@ -6,7 +6,7 @@ function Header() {
             <div id="header-quanment">Quanment</div>
             <div id="header-history">History</div>
         </nav>
-        <article><text>Welcome To Quantity Measurement</text></article>
+        <article>Welcome To Quantity Measurement</article>
     </header>
 }
 
