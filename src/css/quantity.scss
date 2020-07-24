@@ -1,0 +1,40 @@
+html,
+body,
+#root,
+.App {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+header {
+  height: 15%;
+}
+
+header nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 40%;
+  font-family: Poppins;
+}
+
+header article {
+  height: 60%;
+  background: #446dff 0% 0% no-repeat padding-box;
+  color: white;
+  font-family: Montserrat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+}
+
+#header-quanment {
+  font-weight: 600;
+  font-size: 25px;
+}
+
+#header-history {
+  font-size: 12px;
+}
