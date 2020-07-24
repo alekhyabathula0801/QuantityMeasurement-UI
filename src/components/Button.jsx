@@ -3,9 +3,12 @@ import React, { Component } from "react";
 class Button extends Component {
   render() {
     return (
-      <button className={this.props.name}>
+      <button
+        className={this.props.quantity.measurementType}
+        onClick={() => this.props.setQuantity(this.props.quantity)}
+      >
         <div id="quantity-image"></div>
-        <div id="quantity-name">{this.props.name}</div>
+        <div id="quantity-name">{this.props.quantity.measurementType}</div>
       </button>
     );
   }
