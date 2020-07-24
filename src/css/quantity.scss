@@ -114,4 +114,48 @@ header {
     color: $quantiyNameColor;
   }
 
+  .Length:hover,
+  .Length:focus {
+    background: #edfdf9 0% 0% no-repeat padding-box;
+    box-shadow: $quantityBoxSadow;
+    border: 1px solid $lengthColor;
+    #quantity-image {
+      background: transparent url("../assets/scale-color.svg") 0% 0% no-repeat
+        padding-box;
+    }
+    #quantity-name {
+      font-weight: bold;
+      color: $lengthColor;
+    }
+  }
+
+  .Temperature:hover,
+  .Temperature:focus {
+    background: #ffeef0 0% 0% no-repeat padding-box;
+    box-shadow: $quantityBoxSadow;
+    border: 1px solid $temperatureColor;
+    #quantity-image {
+      background: transparent url("../assets/hot-color.svg") 0% 0% no-repeat
+        padding-box;
+    }
+    #quantity-name {
+      font-weight: bold;
+      color: $temperatureColor;
+    }
+  }
+
+  .Volume:hover,
+  .Volume:focus {
+    background: #e8ddff 0% 0% no-repeat padding-box;
+    box-shadow: $quantityBoxSadow;
+    border: 1px solid $volumeColor;
+    #quantity-image {
+      background: transparent url("../assets/beaker-color.svg") 0% 0% no-repeat
+        padding-box;
+    }
+    #quantity-name {
+      font-weight: bold;
+      color: $volumeColor;
+    }
+  }
 }
