@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./components/Header";
 import "./css/quantity.scss";
-import Home from "./components/Home";
+import Main from "./components/Main";
 
 function App() {
   var message = ["from", "to"];
@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Home unit={unit} message={message} />
+      <Main unit={unit} message={message} />
     </div>
   );
 }
