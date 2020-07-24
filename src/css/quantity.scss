@@ -16,6 +16,8 @@ body,
   width: 100%;
   height: 100%;
   font-family: $latoFont;
+  text-align: center;
+  background-color: $homeBackground;
 }
 
 header {
@@ -51,30 +53,32 @@ header {
 }
 
 .home {
-  height: 85%;
+  padding-top: 5vh;
+  width: 60%;
+  height: 80%;
   display: flex;
   background-color: $homeBackground;
   flex-direction: column;
-
-  text {
-    margin-top: 15px;
-    margin-bottom: 20px;
-    text-align: center;
+  align-items: center;
+  display: inline-block;
+  #home-text {
+    text-align: left;
     font-weight: 600;
+    width: 100%;
+    margin-bottom: 5px;
   }
 
   #quantity {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    height: 20%;
   }
 
   .Length,
   .Temperature,
   .Volume {
-    width: 150px;
-    height: 120px;
-    margin-left: 19px;
-    margin-right: 19px;
+    width: 25%;
+    height: 100%;
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
@@ -158,4 +162,43 @@ header {
       color: $volumeColor;
     }
   }
+}
+
+#converter {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+#from,
+#to {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  width: 40%;
+}
+
+#from input,
+#to input {
+  font-size: 30px;
+  border-radius: 3px;
+  border: 1px solid $quantiyNameColor;
+  outline: none;
+}
+
+#from select,
+#to select {
+  padding: 8px;
+  border-radius: 3px;
+  border: 1px solid $quantiyNameColor;
+  outline: none;
+}
+
+#converter-table-name {
+  text-align: left;
+  font-size: 0.8vw;
+  text-transform: uppercase;
+  font-weight: 600;
+  opacity: 0.62;
+  padding-left: 5px;
 }

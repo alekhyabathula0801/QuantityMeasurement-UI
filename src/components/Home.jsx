@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Button from "./Button";
+import Converter from "./Converter";
 
 class Home extends Component {
   constructor() {
@@ -14,8 +15,12 @@ class Home extends Component {
     ));
     return (
       <div className="home">
-        <text>CHOOSE TYPE</text>
+        <div id="home-text">CHOOSE TYPE</div>
         <div id="quantity">{quantityTypesButtons}</div>
+        <div id="converter">
+          <Converter name="from" units={["Metre", "Inch"]} />
+          <Converter name="to" units={["Metre", "Inch"]} />
+        </div>
       </div>
     );
   }
