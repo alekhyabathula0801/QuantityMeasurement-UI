@@ -74,9 +74,9 @@ header {
     height: 20%;
   }
 
-  .Length,
-  .Temperature,
-  .Volume {
+  #Length,
+  #Temperature,
+  #Volume {
     width: 25%;
     height: 100%;
     margin-bottom: 20px;
@@ -91,24 +91,23 @@ header {
     border-radius: 7px;
   }
 
-  .Length #quantity-image {
+  #Length #quantity-image {
     width: 12px;
     height: 50px;
-    background: transparent url("../assets/scale.svg") 0% 0% no-repeat
-      padding-box;
+    background: transparent url("../assets/scale.svg")  0% 0% no-repeat
+    padding-box;
   }
 
-  .Temperature #quantity-image {
+  #Temperature #quantity-image {
     width: 30px;
     height: 58px;
-    background: transparent url("../assets/hot.svg") 0% 0% no-repeat padding-box;
+    background: transparent url("../assets/hot.svg");
   }
 
-  .Volume #quantity-image {
+  #Volume #quantity-image {
     width: 50px;
     height: 50px;
-    background: transparent url("../assets/beaker.svg") 0% 0% no-repeat
-      padding-box;
+    background: transparent url("../assets/beaker.svg");
   }
 
   #quantity-name {
@@ -118,14 +117,14 @@ header {
     color: $quantiyNameColor;
   }
 
-  .Length:hover,
-  .Length:focus {
-    background: #edfdf9 0% 0% no-repeat padding-box;
+  #Length:hover,
+  #Length:focus {
+    background: #edfdf9;
     box-shadow: $quantityBoxSadow;
     border: 1px solid $lengthColor;
     #quantity-image {
       background: transparent url("../assets/scale-color.svg") 0% 0% no-repeat
-        padding-box;
+      padding-box;
     }
     #quantity-name {
       font-weight: bold;
@@ -133,14 +132,13 @@ header {
     }
   }
 
-  .Temperature:hover,
-  .Temperature:focus {
-    background: #ffeef0 0% 0% no-repeat padding-box;
+  #Temperature:hover,
+  #Temperature:focus {
+    background: #ffeef0;
     box-shadow: $quantityBoxSadow;
     border: 1px solid $temperatureColor;
     #quantity-image {
-      background: transparent url("../assets/hot-color.svg") 0% 0% no-repeat
-        padding-box;
+      background: transparent url("../assets/hot-color.svg");
     }
     #quantity-name {
       font-weight: bold;
@@ -148,9 +146,9 @@ header {
     }
   }
 
-  .Volume:hover,
-  .Volume:focus {
-    background: #e8ddff 0% 0% no-repeat padding-box;
+  #Volume:hover,
+  #Volume:focus {
+    background: #e8ddff;
     box-shadow: $quantityBoxSadow;
     border: 1px solid $volumeColor;
     #quantity-image {
@@ -207,9 +205,9 @@ header {
   .home {
     width: 100%;
 
-    .Length,
-    .Temperature,
-    .Volume {
+    #Length,
+    #Temperature,
+    #Volume {
       width: 30%;
       padding: 5px;
     }

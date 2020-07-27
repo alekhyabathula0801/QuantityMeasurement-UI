@@ -15,6 +15,10 @@ class Main extends Component {
     this.setState({ currentQuantity: quantity });
   }
 
+  componentDidMount() {
+    document.getElementById(this.state.currentQuantity.measurementType).focus();
+  }
+
   render() {
     var quantityTypesButtons = this.props.unit.map((quantity) => (
       <Button quantity={quantity} setQuantity={this.setQuantity} />
