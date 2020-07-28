@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Button from "./Button";
+import MeasurementTypes from "./MeasurementTypes";
 import Converter from "./Converter";
 
 class Main extends Component {
@@ -17,7 +17,7 @@ class Main extends Component {
 
   render() {
     var quantityTypesButtons = this.props.unit.map((quantity) => (
-      <Button
+      <MeasurementTypes
         quantity={quantity}
         setQuantity={this.setQuantity}
         isActive={

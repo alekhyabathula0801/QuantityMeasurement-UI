@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class Button extends Component {
+class MeasurementTypes extends Component {
   render() {
     return (
       <button
@@ -14,4 +14,4 @@ class Button extends Component {
   }
 }
 
-export default Button;
+export default MeasurementTypes;
