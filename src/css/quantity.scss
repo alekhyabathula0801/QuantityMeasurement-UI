@@ -8,6 +8,21 @@ $temperatureColor: #fd5160;
 $volumeColor: #7224ff;
 $quantityBoxSadow: 0px 3px 6px #00000029;
 
+length-image-size {
+  width: 12px;
+  height: 50px;
+}
+
+temperature-image-size {
+  width: 30px;
+  height: 58px;
+}
+
+volume-image-size {
+  width: 50px;
+  height: 50px;
+}
+
 html,
 body,
 #root,
@@ -76,7 +91,10 @@ header {
 
   #Length,
   #Temperature,
-  #Volume {
+  #Volume,
+  #Length-active,
+  #Temperature-active,
+  #Volume-active {
     width: 25%;
     height: 100%;
     margin-bottom: 20px;
@@ -92,39 +110,38 @@ header {
   }
 
   #Length #quantity-image {
-    width: 12px;
-    height: 50px;
-    background: transparent url("../assets/scale.svg")  0% 0% no-repeat
-    padding-box;
+    @extend length-image-size;
+    background: transparent url("../assets/scale.svg") 0% 0% no-repeat
+      padding-box;
   }
 
   #Temperature #quantity-image {
-    width: 30px;
-    height: 58px;
+    @extend temperature-image-size;
     background: transparent url("../assets/hot.svg");
   }
 
   #Volume #quantity-image {
-    width: 50px;
-    height: 50px;
-    background: transparent url("../assets/beaker.svg");
+    @extend volume-image-size;
+    background: transparent url("../assets/beaker.svg") 0% 0% no-repeat
+      padding-box;
   }
 
   #quantity-name {
-    font-size: 1vw;
+    font-size: 1.2vw;
     width: 100%;
     margin-top: 5px;
     color: $quantiyNameColor;
   }
 
   #Length:hover,
-  #Length:focus {
+  #Length-active {
     background: #edfdf9;
     box-shadow: $quantityBoxSadow;
     border: 1px solid $lengthColor;
     #quantity-image {
+      @extend length-image-size;
       background: transparent url("../assets/scale-color.svg") 0% 0% no-repeat
-      padding-box;
+        padding-box;
     }
     #quantity-name {
       font-weight: bold;
@@ -133,11 +150,12 @@ header {
   }
 
   #Temperature:hover,
-  #Temperature:focus {
+  #Temperature-active {
     background: #ffeef0;
     box-shadow: $quantityBoxSadow;
     border: 1px solid $temperatureColor;
     #quantity-image {
+      @extend temperature-image-size;
       background: transparent url("../assets/hot-color.svg");
     }
     #quantity-name {
@@ -147,11 +165,12 @@ header {
   }
 
   #Volume:hover,
-  #Volume:focus {
+  #Volume-active {
     background: #e8ddff;
     box-shadow: $quantityBoxSadow;
     border: 1px solid $volumeColor;
     #quantity-image {
+      @extend volume-image-size;
       background: transparent url("../assets/beaker-color.svg") 0% 0% no-repeat
         padding-box;
     }
@@ -207,7 +226,10 @@ header {
 
     #Length,
     #Temperature,
-    #Volume {
+    #Volume,
+    #Length-active,
+    #Temperature-active,
+    #Volume-active {
       width: 30%;
       padding: 5px;
     }

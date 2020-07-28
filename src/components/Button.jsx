@@ -4,7 +4,7 @@ class Button extends Component {
   render() {
     return (
       <button
-        id={this.props.quantity.measurementType}
+        id={this.props.isActive ? `${this.props.quantity.measurementType}-active` :  this.props.quantity.measurementType}
         onClick={() => this.props.setQuantity(this.props.quantity)}
       >
         <div id="quantity-image"></div>

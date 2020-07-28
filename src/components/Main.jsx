@@ -15,16 +15,24 @@ class Main extends Component {
     this.setState({ currentQuantity: quantity });
   }
 
-  componentDidMount() {
-    document.getElementById(this.state.currentQuantity.measurementType).focus();
-  }
-
   render() {
     var quantityTypesButtons = this.props.unit.map((quantity) => (
-      <Button quantity={quantity} setQuantity={this.setQuantity} />
+      <Button
+        quantity={quantity}
+        setQuantity={this.setQuantity}
+        isActive={
+          this.state.currentQuantity.measurementType ===
+          quantity.measurementType
+        }
+      />
     ));
     var converter = this.props.message.map((message) => (
-      <Converter name={message} units={this.state.currentQuantity.units} />
+      <Converter
+        name={message}
+        units={this.state.currentQuantity.units}
+        setSelectedUnit={this.setSelectedUnit}
+        selectedUnit={this.state.selectedUnit}
+      />
     ));
     return (
       <div className="home">
