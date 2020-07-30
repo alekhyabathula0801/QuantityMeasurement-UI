@@ -6,6 +6,7 @@ $quantiyNameColor: #c9c9c9;
 $lengthColor: #0ec098;
 $temperatureColor: #fd5160;
 $volumeColor: #7224ff;
+$massColor: #2e5172;
 $quantityBoxSadow: 0px 3px 6px #00000029;
 
 length-image-size {
@@ -19,6 +20,11 @@ temperature-image-size {
 }
 
 volume-image-size {
+  width: 50px;
+  height: 50px;
+}
+
+mass-image-size {
   width: 50px;
   height: 50px;
 }
@@ -69,7 +75,7 @@ header {
 
 .home {
   padding-top: 5vh;
-  width: 60%;
+  width: 75%;
   height: 80%;
   display: flex;
   background-color: $homeBackground;
@@ -81,6 +87,7 @@ header {
     font-weight: 600;
     width: 100%;
     margin-bottom: 5px;
+    padding: 5px;
   }
 
   #quantity {
@@ -97,7 +104,7 @@ header {
   #TEMPERATURE-active,
   #VOLUME-active,
   #MASS-active {
-    width: 25%;
+    width: 23%;
     height: 100%;
     margin-bottom: 20px;
     display: flex;
@@ -128,6 +135,12 @@ header {
       padding-box;
   }
 
+  #MASS #quantity-image {
+    @extend mass-image-size;
+    background: transparent url("../assets/mass.svg") 0% 0% no-repeat
+      padding-box;
+  }
+
   #quantity-name {
     font-size: 1.2vw;
     width: 100%;
@@ -149,7 +162,7 @@ header {
     #quantity-name {
       font-weight: bold;
       color: $lengthColor;
-    text-transform: capitalize;
+      text-transform: capitalize;
     }
   }
 
@@ -181,6 +194,22 @@ header {
     #quantity-name {
       font-weight: bold;
       color: $volumeColor;
+    }
+  }
+
+  #MASS:hover,
+  #MASS-active {
+    background: #e8ddff;
+    box-shadow: $quantityBoxSadow;
+    border: 1px solid $massColor;
+    #quantity-image {
+      @extend mass-image-size;
+      background: transparent url("../assets/mass-color.svg") 0% 0% no-repeat
+        padding-box;
+    }
+    #quantity-name {
+      font-weight: bold;
+      color: $massColor;
     }
   }
 }
@@ -224,25 +253,35 @@ header {
   padding-left: 5px;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 660px) {
   .home {
     width: 100%;
 
-    #Length,
-    #Temperature,
-    #Volume,
-    #Length-active,
-    #Temperature-active,
-    #Volume-active {
-      width: 30%;
+    #home-text {
+      text-align: center;
+    }
+
+    #LENGTH,
+    #TEMPERATURE,
+    #VOLUME,
+    #MASS,
+    #LENGTH-active,
+    #TEMPERATURE-active,
+    #MASS-active,
+    #VOLUME-active {
+      width: 150px;
+      height: 100px;
       padding: 5px;
+      margin: 5px;
     }
 
     #quantity {
+      overflow: auto;
       display: flex;
-      justify-content: space-between;
+      flex-wrap: wrap;
+      justify-content: center;
       padding: 5px;
-      height: 20%;
+      height: 45%;
     }
   }
 }
@@ -250,7 +289,7 @@ header {
 @media only screen and (max-height: 500px) {
   .home {
     #quantity {
-      height: 30%;
+      height: 40%;
     }
   }
 }
