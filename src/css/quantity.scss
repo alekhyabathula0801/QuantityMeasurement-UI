@@ -44,6 +44,10 @@ body,
 header {
   height: 15%;
 
+  a {
+    text-decoration: none;
+  }
+
   nav {
     display: flex;
     justify-content: space-around;
@@ -218,6 +222,7 @@ header {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
+  height: 40%;
 }
 
 #from,
@@ -242,6 +247,10 @@ header {
   border-radius: 3px;
   border: 1px solid $quantiyNameColor;
   outline: none;
+  option {
+    position: absolute;
+    overflow: auto;
+  }
 }
 
 #converter-table-name {

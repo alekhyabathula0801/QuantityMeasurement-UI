@@ -6,6 +6,8 @@ import {
   getAvailableMeasurementTypes,
   getUnitsOfGivenMeasurementType,
 } from "./service/service";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import History from "./components/History";
 
 class App extends Component {
   constructor() {
@@ -83,8 +85,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
-        <Main unit={this.state.measurementUnits} />
+        <Router>
+          <Header />
+          <Route
+            path="/"
+            exact
+            render={() => <Main unit={this.state.measurementUnits} />}
+          />
+          <Route path="/history" component={History} />
+        </Router>
       </div>
     );
   }
