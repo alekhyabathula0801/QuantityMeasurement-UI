@@ -16,6 +16,7 @@ class Converter extends Component {
             <option
               key={unit}
               value={unit}
+              disabled={this.props.selectedUnit === unit ? true : null}
             >
               {unit}
             </option>
