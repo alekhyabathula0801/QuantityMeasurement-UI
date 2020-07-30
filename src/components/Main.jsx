@@ -24,7 +24,6 @@ class Main extends Component {
       {
         currentQuantity: quantity,
         fromValue: 0,
-        toValue: 0,
         fromUnit: quantity.units[0],
         toUnit: quantity.units[1],
       },
@@ -53,14 +52,14 @@ class Main extends Component {
     var value = document.getElementById("from-input").value;
     var requiredUnit = document.getElementById("to-select").value;
     console.log(unit + " " + value + " " + requiredUnit);
-    var result = await getConvertedValue(unit, value, requiredUnit).then(
-      (response) => {
+    var result = await getConvertedValue(unit, value, requiredUnit)
+      .then((response) => {
         this.setState({ toValue: response.data.result });
         return response.data.result;
-      }
-    ).catch((error) => {
-      console.log(error)
-    });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     console.log(result + "is result");
   }
 
@@ -83,7 +82,6 @@ class Main extends Component {
         <div id="quantity">{measurementTypesButtons}</div>
         <div id="converter">
           <Converter
-            key="from"
             name="from"
             units={this.state.currentQuantity.units}
             setUnit={this.setFromUnit}
@@ -94,7 +92,6 @@ class Main extends Component {
           />
 
           <Converter
-            key="to"
             name="to"
             units={this.state.currentQuantity.units}
             setUnit={this.setToUnit}

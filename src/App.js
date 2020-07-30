@@ -2,29 +2,89 @@ import React, { Component } from "react";
 import Header from "./components/Header";
 import "./css/quantity.scss";
 import Main from "./components/Main";
+import {
+  getAvailableMeasurementTypes,
+  getUnitsOfGivenMeasurementType,
+} from "./service/service";
 
 class App extends Component {
-  render() {
-    // var message = ["from", "to"];
-    var unit = [
-      {
-        measurementType: "Length",
-        units: ["Metre", "Inch", "Feet","Millimetre"],
-      },
-      {
-        measurementType: "Temperature",
-        units: ["Kelvin", "Celcius", "Fahrenheit"],
-      },
-      {
-        measurementType: "Volume",
-        units: ["Litre", "Millilitre", "Gallon"],
-      },
-    ];
+  constructor() {
+    super();
+    this.state = {
+      quantiyTypes: [],
+      measurementUnits: [
+        {
+          measurementType: "LENGTH",
+          units: [
+            "INCH",
+            "FEET",
+            "MILLIMETRE",
+            "YARD",
+            "METRE",
+            "CENTIMETRE",
+            "KILOMETRE",
+          ],
+        },
+      ],
+    };
+  }
 
+  async componentDidMount() {
+    await this.getMeasurementType();
+    console.log(this.state.quantiyTypes[0]);
+    this.state.quantiyTypes.forEach((element) => {
+      this.getUnits(element);
+    });
+  }
+
+  async getMeasurementType() {
+    await getAvailableMeasurementTypes()
+      .then((response) => {
+        this.setState(
+          {
+            quantiyTypes: response.data.result,
+          },
+          () => console.log(this.state.quantiyTypes)
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    this.setState({ measurementUnits: [] });
+  }
+
+  async getUnits(measure) {
+    await getUnitsOfGivenMeasurementType(measure)
+      .then((res) => {
+        let measurementAndUnit = {
+          measurementType: measure,
+          units: res.data.result,
+        };
+        console.log(
+          measurementAndUnit.measurementType +
+            " units are " +
+            measurementAndUnit.units
+        );
+        this.setState(
+          {
+            measurementUnits: [
+              ...this.state.measurementUnits,
+              measurementAndUnit,
+            ],
+          },
+          () => console.log(this.state.measurementUnits)
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  render() {
     return (
       <div className="App">
         <Header />
-        <Main unit={unit} />
+        <Main unit={this.state.measurementUnits} />
       </div>
     );
   }

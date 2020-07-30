@@ -13,12 +13,6 @@ length-image-size {
   height: 50px;
 }
 
-// #demo {
-//   width: 500px;
-//   height: 500px;
-//   background-color: green;
-// }
-
 temperature-image-size {
   width: 30px;
   height: 58px;
@@ -95,12 +89,14 @@ header {
     height: 20%;
   }
 
-  #Length,
-  #Temperature,
-  #Volume,
-  #Length-active,
-  #Temperature-active,
-  #Volume-active {
+  #LENGTH,
+  #TEMPERATURE,
+  #VOLUME,
+  #MASS,
+  #LENGTH-active,
+  #TEMPERATURE-active,
+  #VOLUME-active,
+  #MASS-active {
     width: 25%;
     height: 100%;
     margin-bottom: 20px;
@@ -115,18 +111,18 @@ header {
     border-radius: 7px;
   }
 
-  #Length #quantity-image {
+  #LENGTH #quantity-image {
     @extend length-image-size;
     background: transparent url("../assets/scale.svg") 0% 0% no-repeat
       padding-box;
   }
 
-  #Temperature #quantity-image {
+  #TEMPERATURE #quantity-image {
     @extend temperature-image-size;
     background: transparent url("../assets/hot.svg");
   }
 
-  #Volume #quantity-image {
+  #VOLUME #quantity-image {
     @extend volume-image-size;
     background: transparent url("../assets/beaker.svg") 0% 0% no-repeat
       padding-box;
@@ -137,10 +133,11 @@ header {
     width: 100%;
     margin-top: 5px;
     color: $quantiyNameColor;
+    text-transform: capitalize;
   }
 
-  #Length:hover,
-  #Length-active {
+  #LENGTH:hover,
+  #LENGTH-active {
     background: #edfdf9;
     box-shadow: $quantityBoxSadow;
     border: 1px solid $lengthColor;
@@ -152,11 +149,12 @@ header {
     #quantity-name {
       font-weight: bold;
       color: $lengthColor;
+    text-transform: capitalize;
     }
   }
 
-  #Temperature:hover,
-  #Temperature-active {
+  #TEMPERATURE:hover,
+  #TEMPERATURE-active {
     background: #ffeef0;
     box-shadow: $quantityBoxSadow;
     border: 1px solid $temperatureColor;
@@ -170,8 +168,8 @@ header {
     }
   }
 
-  #Volume:hover,
-  #Volume-active {
+  #VOLUME:hover,
+  #VOLUME-active {
     background: #e8ddff;
     box-shadow: $quantityBoxSadow;
     border: 1px solid $volumeColor;
