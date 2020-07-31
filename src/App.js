@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Header from "./components/Header";
 import "./css/quantity.scss";
+import "./css/history.scss";
 import Main from "./components/Main";
 import {
   getAvailableMeasurementTypes,
@@ -14,6 +15,7 @@ class App extends Component {
     super();
     this.state = {
       quantiyTypes: [],
+      historyData : [],
       measurementUnits: [
         {
           measurementType: "LENGTH",
@@ -29,12 +31,14 @@ class App extends Component {
         },
       ],
     };
+  this.updateHistory = this.updateHistory.bind(this);
   }
 
   async componentDidMount() {
     await this.getMeasurementType();
     console.log(this.state.quantiyTypes[0]);
-    this.state.quantiyTypes.forEach((element) => {
+    this.state.quantiyTypes.forEach( (element) => {
+      console.log(element + "in element ");
       this.getUnits(element);
     });
   }
@@ -82,6 +86,24 @@ class App extends Component {
       });
   }
 
+  updateHistory(unit,value,requiredUnit,result) {
+    let data = {
+      unit: unit,
+      value:value,
+      requiredUnit:requiredUnit,
+      result:result
+    };
+    this.setState(
+      {
+        historyData: [
+          ...this.state.historyData,
+          data,
+        ],
+      },
+      () => console.log(this.state.historyData)
+    );
+  }
+
   render() {
     return (
       <div className="App">
@@ -90,9 +112,9 @@ class App extends Component {
           <Route
             path="/"
             exact
-            render={() => <Main unit={this.state.measurementUnits} />}
+            render={() => <Main unit={this.state.measurementUnits} updateHistory={this.updateHistory} />}
           />
-          <Route path="/history" component={History} />
+          <Route path="/history" render={() => <History historyData={this.state.historyData} />} />
         </Router>
       </div>
     );

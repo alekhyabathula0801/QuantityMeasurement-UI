@@ -2,14 +2,14 @@ import axios from "axios";
 
 var url = "http://localhost:8080/quantity-measurement";
 
-export async function getConvertedValue(unit, value, requiredUnit) {
-  return await axios.get(`${url}/${unit}/${value}/${requiredUnit}`);
+export function getConvertedValue(unit, value, requiredUnit) {
+  return axios.get(`${url}/${unit}/${value}/${requiredUnit}`);
 }
 
-export async function getAvailableMeasurementTypes() {
-  return await axios.get(url);
+export function getAvailableMeasurementTypes() {
+  return axios.get(url);
 }
 
-export async function getUnitsOfGivenMeasurementType(measurementType) {
-  return await axios.get(`${url}/${measurementType}`);
+export function getUnitsOfGivenMeasurementType(measurementType) {
+  return axios.get(`${url}/${measurementType}`);
 }

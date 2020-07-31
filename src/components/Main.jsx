@@ -61,6 +61,7 @@ class Main extends Component {
         console.log(error);
       });
     console.log(result + "is result");
+    this.props.updateHistory(unit,value,requiredUnit,result);
   }
 
   render() {
