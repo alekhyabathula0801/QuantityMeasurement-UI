@@ -1,0 +1,46 @@
+.history {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1vw;
+  overflow: auto;
+  font-family: Lato;
+
+  #welcome-history {
+    font-size: 1.5vw;
+    width: 100%;
+    margin-top: 5px;
+    background-color: paleturquoise;
+    color: rgb(196, 21, 50);
+    justify-content: center;
+    align-items: center;
+  }
+
+  #history-table {
+    width: 85%;
+    margin: 5px;
+    align-items: center;
+    border: 1px solid grey;
+    border-collapse: collapse;
+    background-color: white;
+  }
+
+  td,
+  th {
+    border: 1px solid grey;
+  }
+
+  tr th {
+    font-weight: 600;
+    color: red;
+    padding: 3px;
+  }
+
+  tr td {
+    text-transform: lowercase;
+    padding: 3px;
+    color: blueviolet;
+  }
+}
