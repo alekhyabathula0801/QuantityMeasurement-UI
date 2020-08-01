@@ -36,7 +36,7 @@ class App extends Component {
 
   async componentDidMount() {
     await this.getMeasurementType();
-    console.log(this.state.quantiyTypes[0]);
+    console.log(this.state.quantiyTypes);
     this.state.quantiyTypes.forEach((element) => {
       this.getUnits(element);
     });

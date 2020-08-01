@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let url = "http://localhost:8080/quantity-measurement";
+let url = process.env.REACT_APP_API_URL;
 
 export async function getConvertedValue(unit, value, requiredUnit) {
   return await axios
