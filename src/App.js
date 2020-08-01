@@ -15,7 +15,7 @@ class App extends Component {
     super();
     this.state = {
       quantiyTypes: [],
-      historyData: [],
+      historyData: JSON.parse(localStorage.getItem("quantityMeasurementHistory")) || [],
       measurementUnits: [
         {
           measurementType: "LENGTH",
@@ -91,7 +91,8 @@ class App extends Component {
       {
         historyData: [...this.state.historyData, data],
       },
-      () => console.log(this.state.historyData)
+      () => console.log(this.state.historyData),
+      localStorage.setItem("quantityMeasurementHistory",JSON.stringify(this.state.historyData)),
     );
   }
 
