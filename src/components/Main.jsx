@@ -35,34 +35,28 @@ class Main extends Component {
     this.setToValue();
   }
 
-  setFromUnit = event => {
+  setFromUnit = (event) => {
     this.setState({ fromUnit: event.target.value });
-  }
+  };
 
-  setToUnit = event => {
+  setToUnit = (event) => {
     this.setState({ toUnit: event.target.value });
-  }
+  };
 
   setFromValue = async (event) => {
     this.setState({ fromValue: event.target.value });
-  }
+  };
 
   setToValue = async () => {
     let unit = document.getElementById("from-select").value;
     let value = document.getElementById("from-input").value;
     let requiredUnit = document.getElementById("to-select").value;
     console.log(unit + " " + value + " " + requiredUnit);
-    let result = await getConvertedValue(unit, value, requiredUnit)
-      .then((response) => {
-        this.setState({ toValue: response.data.result });
-        return response.data.result;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    let result = await getConvertedValue(unit, value, requiredUnit);
+    this.setState({ toValue: result });
     console.log(result + "is result");
     this.props.updateHistory(unit, value, requiredUnit, result);
-  }
+  };
 
   render() {
     let measurementTypesButtons = this.props.unit.map((quantity) => (

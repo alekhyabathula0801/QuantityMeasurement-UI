@@ -44,53 +44,40 @@ class App extends Component {
 
   async update() {
     await this.getMeasurementType();
-    console.log(this.state.quantiyTypes[0]);
+    console.log(this.state.quantiyTypes);
     this.state.quantiyTypes.forEach((element) => {
       this.getUnits(element);
     });
   }
 
   async getMeasurementType() {
-    await getAvailableMeasurementTypes()
-      .then((response) => {
-        this.setState(
-          {
-            quantiyTypes: response.data.result,
-          },
-          () => console.log(this.state.quantiyTypes)
-        );
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    let measurementTypes = await getAvailableMeasurementTypes();
+    this.setState(
+      {
+        quantiyTypes: measurementTypes,
+      },
+      () => console.log(this.state.quantiyTypes)
+    );
     this.setState({ measurementUnits: [] });
   }
 
-  async getUnits(measure) {
-    await getUnitsOfGivenMeasurementType(measure)
-      .then((res) => {
-        let measurementAndUnit = {
-          measurementType: measure,
-          units: res.data.result,
-        };
-        console.log(
-          measurementAndUnit.measurementType +
-            " units are " +
-            measurementAndUnit.units
-        );
-        this.setState(
-          {
-            measurementUnits: [
-              ...this.state.measurementUnits,
-              measurementAndUnit,
-            ],
-          },
-          () => console.log(this.state.measurementUnits)
-        );
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  async getUnits(measurement) {
+    let units = await getUnitsOfGivenMeasurementType(measurement);
+    let measurementAndUnit = {
+      measurementType: measurement,
+      units: units,
+    };
+    console.log(
+      measurementAndUnit.measurementType +
+        " units are " +
+        measurementAndUnit.units
+    );
+    this.setState(
+      {
+        measurementUnits: [...this.state.measurementUnits, measurementAndUnit],
+      },
+      () => console.log(this.state.measurementUnits)
+    );
   }
 
   updateHistory(unit, value, requiredUnit, result) {

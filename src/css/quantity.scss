@@ -326,13 +326,13 @@ header {
     align-items: center;
     margin: 10px;
     height: 40%;
-  }
 
-  #from,
-  #to {
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-    width: 85%;
+    #from,
+    #to {
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+      width: 85%;
+    }
   }
 }
