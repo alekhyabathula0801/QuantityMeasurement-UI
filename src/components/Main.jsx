@@ -35,24 +35,24 @@ class Main extends Component {
     this.setToValue();
   }
 
-  setFromUnit(event) {
+  setFromUnit = event => {
     this.setState({ fromUnit: event.target.value });
   }
 
-  setToUnit(event) {
+  setToUnit = event => {
     this.setState({ toUnit: event.target.value });
   }
 
-  setFromValue(event) {
+  setFromValue = async (event) => {
     this.setState({ fromValue: event.target.value });
   }
 
-  async setToValue() {
-    var unit = document.getElementById("from-select").value;
-    var value = document.getElementById("from-input").value;
-    var requiredUnit = document.getElementById("to-select").value;
+  setToValue = async () => {
+    let unit = document.getElementById("from-select").value;
+    let value = document.getElementById("from-input").value;
+    let requiredUnit = document.getElementById("to-select").value;
     console.log(unit + " " + value + " " + requiredUnit);
-    var result = await getConvertedValue(unit, value, requiredUnit)
+    let result = await getConvertedValue(unit, value, requiredUnit)
       .then((response) => {
         this.setState({ toValue: response.data.result });
         return response.data.result;
@@ -61,11 +61,11 @@ class Main extends Component {
         console.log(error);
       });
     console.log(result + "is result");
-    this.props.updateHistory(unit,value,requiredUnit,result);
+    this.props.updateHistory(unit, value, requiredUnit, result);
   }
 
   render() {
-    var measurementTypesButtons = this.props.unit.map((quantity) => (
+    let measurementTypesButtons = this.props.unit.map((quantity) => (
       <MeasurementTypes
         key={quantity.measurementType}
         quantity={quantity}

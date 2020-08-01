@@ -15,7 +15,7 @@ class App extends Component {
     super();
     this.state = {
       quantiyTypes: [],
-      historyData : [],
+      historyData: [],
       measurementUnits: [
         {
           measurementType: "LENGTH",
@@ -31,14 +31,21 @@ class App extends Component {
         },
       ],
     };
-  this.updateHistory = this.updateHistory.bind(this);
+    this.updateHistory = this.updateHistory.bind(this);
   }
 
   async componentDidMount() {
     await this.getMeasurementType();
     console.log(this.state.quantiyTypes[0]);
-    this.state.quantiyTypes.forEach( (element) => {
-      console.log(element + "in element ");
+    this.state.quantiyTypes.forEach((element) => {
+      this.getUnits(element);
+    });
+  }
+
+  async update() {
+    await this.getMeasurementType();
+    console.log(this.state.quantiyTypes[0]);
+    this.state.quantiyTypes.forEach((element) => {
       this.getUnits(element);
     });
   }
@@ -86,19 +93,16 @@ class App extends Component {
       });
   }
 
-  updateHistory(unit,value,requiredUnit,result) {
+  updateHistory(unit, value, requiredUnit, result) {
     let data = {
       unit: unit,
-      value:value,
-      requiredUnit:requiredUnit,
-      result:result
+      value: value,
+      requiredUnit: requiredUnit,
+      result: result,
     };
     this.setState(
       {
-        historyData: [
-          ...this.state.historyData,
-          data,
-        ],
+        historyData: [...this.state.historyData, data],
       },
       () => console.log(this.state.historyData)
     );
@@ -112,9 +116,17 @@ class App extends Component {
           <Route
             path="/"
             exact
-            render={() => <Main unit={this.state.measurementUnits} updateHistory={this.updateHistory} />}
+            render={() => (
+              <Main
+                unit={this.state.measurementUnits}
+                updateHistory={this.updateHistory}
+              />
+            )}
           />
-          <Route path="/history" render={() => <History historyData={this.state.historyData} />} />
+          <Route
+            path="/history"
+            render={() => <History historyData={this.state.historyData} />}
+          />
         </Router>
       </div>
     );

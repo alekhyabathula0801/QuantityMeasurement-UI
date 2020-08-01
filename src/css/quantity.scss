@@ -1,13 +1,16 @@
 $blue: #446dff;
-$latoFont: Lato;
 $white: #ffffff;
 $homeBackground: #f5f6fa;
 $quantiyNameColor: #c9c9c9;
+$converterBorderColor: #e7dcfe;
 $lengthColor: #0ec098;
 $temperatureColor: #fd5160;
 $volumeColor: #7224ff;
 $massColor: #2e5172;
 $quantityBoxSadow: 0px 3px 6px #00000029;
+$montserratFont: Montserrat;
+$poppins: Poppins;
+$robotoFont: Roboto;
 
 length-image-size {
   width: 12px;
@@ -36,13 +39,15 @@ body,
   margin: 0;
   width: 100%;
   height: 100%;
-  font-family: $latoFont;
+  font-size: 10px;
+  font-family: $montserratFont;
   text-align: center;
   background-color: $homeBackground;
 }
 
 header {
   height: 15%;
+  font-family: $montserratFont;
 
   a {
     text-decoration: none;
@@ -53,14 +58,12 @@ header {
     justify-content: space-around;
     align-items: center;
     height: 40%;
-    font-family: $latoFont;
   }
 
   article {
     height: 60%;
     background-color: $blue;
     color: white;
-    font-family: $latoFont;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -86,18 +89,23 @@ header {
   flex-direction: column;
   align-items: center;
   display: inline-block;
+  overflow: auto;
+
   #home-text {
+    font-size: 12px;
     text-align: left;
-    font-weight: 600;
+    font-weight: 500;
     width: 100%;
-    margin-bottom: 5px;
     padding: 5px;
   }
 
   #quantity {
     display: flex;
     justify-content: space-between;
-    height: 20%;
+    height: 25%;
+    button {
+      font: 400 12px $montserratFont;
+    }
   }
 
   #LENGTH,
@@ -158,6 +166,7 @@ header {
     background: #edfdf9;
     box-shadow: $quantityBoxSadow;
     border: 1px solid $lengthColor;
+    opacity: 1;
     #quantity-image {
       @extend length-image-size;
       background: transparent url("../assets/scale-color.svg") 0% 0% no-repeat
@@ -223,48 +232,51 @@ header {
   justify-content: space-between;
   margin-top: 20px;
   height: 40%;
-}
 
-#from,
-#to {
-  display: flex;
-  flex-direction: column;
-  margin-top: 10px;
-  width: 45%;
-}
+  #from,
+  #to {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    width: 45%;
+  }
 
-#from input,
-#to input {
-  font-size: 30px;
-  border-radius: 3px;
-  border: 1px solid $quantiyNameColor;
-  outline: none;
-}
+  #from input,
+  #to input {
+    font-family: $robotoFont;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 25px;
+    border-radius: 3px;
+    border: 1px solid $converterBorderColor;
+    outline: none;
+  }
 
-#from select,
-#to select {
-  padding: 8px;
-  border-radius: 3px;
-  border: 1px solid $quantiyNameColor;
-  outline: none;
-  option {
-    position: absolute;
-    overflow: auto;
+  #from select,
+  #to select {
+    font: 400 12px $montserratFont;
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid $converterBorderColor;
+    outline: none;
+  }
+
+  #converter-table-name {
+    text-align: left;
+    font-size: 0.8vw;
+    text-transform: uppercase;
+    font-weight: 600;
+    opacity: 0.62;
+    padding-left: 5px;
   }
 }
 
-#converter-table-name {
-  text-align: left;
-  font-size: 0.8vw;
-  text-transform: uppercase;
-  font-weight: 600;
-  opacity: 0.62;
-  padding-left: 5px;
-}
-
-@media only screen and (max-width: 660px) {
+@media only screen and (max-width: 650px) {
   .home {
     width: 100%;
+    padding-top: 10px;
 
     #home-text {
       text-align: center;
@@ -293,6 +305,10 @@ header {
       height: 45%;
     }
   }
+
+  #converter {
+    margin: 10px;
+  }
 }
 
 @media only screen and (max-height: 500px) {
@@ -300,5 +316,23 @@ header {
     #quantity {
       height: 40%;
     }
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  #converter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    height: 40%;
+  }
+
+  #from,
+  #to {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    width: 85%;
   }
 }
