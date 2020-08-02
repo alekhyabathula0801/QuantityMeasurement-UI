@@ -52,10 +52,14 @@ class Main extends Component {
     let value = document.getElementById("from-input").value;
     let requiredUnit = document.getElementById("to-select").value;
     console.log(unit + " " + value + " " + requiredUnit);
-    let result = await getConvertedValue(unit, value, requiredUnit);
-    this.setState({ toValue: result });
-    console.log(result + "is result");
-    this.props.updateHistory(unit, value, requiredUnit, result);
+    if (value !== "") {
+      let result = await getConvertedValue(unit, value, requiredUnit);
+      this.setState({ toValue: result });
+      console.log(result + "is result");
+      this.props.updateHistory(unit, value, requiredUnit, result);
+    } else {
+      this.setState({ toValue: '' });
+    }
   };
 
   render() {
@@ -84,6 +88,7 @@ class Main extends Component {
             setToValue={this.setToValue}
             value={this.state.fromValue}
             selectedUnit={this.state.toUnit}
+            placeholder="Enter Number"
           />
 
           <Converter
@@ -94,6 +99,7 @@ class Main extends Component {
             setToValue={this.setToValue}
             value={this.state.toValue}
             selectedUnit={this.state.fromUnit}
+            placeholder="Result"
           />
         </div>
       </div>

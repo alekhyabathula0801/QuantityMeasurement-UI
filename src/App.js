@@ -15,7 +15,8 @@ class App extends Component {
     super();
     this.state = {
       quantiyTypes: [],
-      historyData: JSON.parse(localStorage.getItem("quantityMeasurementHistory")) || [],
+      historyData:
+        JSON.parse(localStorage.getItem("quantityMeasurementHistory")) || [],
       measurementUnits: [
         {
           measurementType: "LENGTH",
@@ -35,14 +36,6 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    await this.getMeasurementType();
-    console.log(this.state.quantiyTypes);
-    this.state.quantiyTypes.forEach((element) => {
-      this.getUnits(element);
-    });
-  }
-
-  async update() {
     await this.getMeasurementType();
     console.log(this.state.quantiyTypes);
     this.state.quantiyTypes.forEach((element) => {
@@ -92,7 +85,10 @@ class App extends Component {
         historyData: [...this.state.historyData, data],
       },
       () => console.log(this.state.historyData),
-      localStorage.setItem("quantityMeasurementHistory",JSON.stringify(this.state.historyData)),
+      localStorage.setItem(
+        "quantityMeasurementHistory",
+        JSON.stringify(this.state.historyData)
+      )
     );
   }
 

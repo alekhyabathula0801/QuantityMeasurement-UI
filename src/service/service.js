@@ -1,5 +1,4 @@
 import axios from "axios";
-
 let url = process.env.REACT_APP_API_URL;
 
 export async function getConvertedValue(unit, value, requiredUnit) {
@@ -14,6 +13,7 @@ export async function getConvertedValue(unit, value, requiredUnit) {
 }
 
 export async function getAvailableMeasurementTypes() {
+  console.log(url);
   return await axios
     .get(url)
     .then((response) => {
