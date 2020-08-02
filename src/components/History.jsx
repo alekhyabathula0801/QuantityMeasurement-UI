@@ -1,6 +1,7 @@
 import React from "react";
 
 function History(props) {
+  console.log("in history")
   var tableBody = props.historyData.map((data) => {
     return (
       <tr>
