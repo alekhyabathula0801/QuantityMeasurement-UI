@@ -27,40 +27,64 @@ class Main extends Component {
         fromUnit: quantity.units[0],
         toUnit: quantity.units[1],
       },
-      () => this.setToValue()
+      () => this.getToResult()
     );
   }
 
   componentDidMount() {
-    this.setToValue();
+    this.getToResult();
   }
 
-  setFromUnit = (event) => {
+  setFromUnit = async (event) => {
     this.setState({ fromUnit: event.target.value });
+    await this.getToResult();
   };
 
-  setToUnit = (event) => {
+  setToUnit = async (event) => {
     this.setState({ toUnit: event.target.value });
+    await this.getToResult();
   };
 
   setFromValue = async (event) => {
-    this.setState({ fromValue: event.target.value });
+    let value = event.target.value;
+    let result = await this.getResult(
+      document.getElementById("from-select").value,
+      value,
+      document.getElementById("to-select").value
+    );
+    this.setState({ fromValue: value, toValue: result });
   };
 
-  setToValue = async () => {
-    let unit = document.getElementById("from-select").value;
+  setToValue = async (event) => {
+    let value = event.target.value;
+    let result = await this.getResult(
+      document.getElementById("to-select").value,
+      value,
+      document.getElementById("from-select").value
+    );
+    this.setState({ fromValue: result, toValue: value });
+  };
+
+  async getToResult() {
     let value = document.getElementById("from-input").value;
-    let requiredUnit = document.getElementById("to-select").value;
+    let result = await this.getResult(
+      document.getElementById("from-select").value,
+      value,
+      document.getElementById("to-select").value
+    );
+    this.setState({ toValue: result });
+  }
+
+  async getResult(unit, value, requiredUnit) {
     console.log(unit + " " + value + " " + requiredUnit);
     if (value !== "") {
       let result = await getConvertedValue(unit, value, requiredUnit);
-      this.setState({ toValue: result });
-      console.log(result + "is result");
       this.props.updateHistory(unit, value, requiredUnit, result);
+      return result;
     } else {
-      this.setState({ toValue: '' });
+      return "";
     }
-  };
+  }
 
   render() {
     let measurementTypesButtons = this.props.unit.map((quantity) => (
@@ -85,10 +109,8 @@ class Main extends Component {
             units={this.state.currentQuantity.units}
             setUnit={this.setFromUnit}
             setValue={this.setFromValue}
-            setToValue={this.setToValue}
             value={this.state.fromValue}
             selectedUnit={this.state.toUnit}
-            placeholder="Enter Number"
           />
 
           <Converter
@@ -96,10 +118,8 @@ class Main extends Component {
             units={this.state.currentQuantity.units}
             setUnit={this.setToUnit}
             setValue={this.setToValue}
-            setToValue={this.setToValue}
             value={this.state.toValue}
             selectedUnit={this.state.fromUnit}
-            placeholder="Result"
           />
         </div>
       </div>
