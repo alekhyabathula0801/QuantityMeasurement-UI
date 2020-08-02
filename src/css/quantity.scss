@@ -89,7 +89,7 @@ header {
   }
 }
 
-.home {
+.main {
   padding-top: 4vh;
   width: 75%;
   height: 80%;
@@ -118,14 +118,14 @@ header {
     }
   }
 
-  #LENGTH,
-  #TEMPERATURE,
-  #VOLUME,
-  #MASS,
-  #LENGTH-active,
-  #TEMPERATURE-active,
-  #VOLUME-active,
-  #MASS-active {
+  #length,
+  #temperature,
+  #volume,
+  #mass,
+  #length-active,
+  #temperature-active,
+  #volume-active,
+  #mass-active {
     width: 23%;
     height: 100%;
     margin-bottom: 20px;
@@ -140,24 +140,24 @@ header {
     border-radius: 7px;
   }
 
-  #LENGTH #quantity-image {
+  #length #quantity-image {
     @extend length-image-size;
     background: transparent url("../assets/scale.svg") 0% 0% no-repeat
       padding-box;
   }
 
-  #TEMPERATURE #quantity-image {
+  #temperature #quantity-image {
     @extend temperature-image-size;
     background: transparent url("../assets/hot.svg");
   }
 
-  #VOLUME #quantity-image {
+  #volume #quantity-image {
     @extend volume-image-size;
     background: transparent url("../assets/beaker.svg") 0% 0% no-repeat
       padding-box;
   }
 
-  #MASS #quantity-image {
+  #mass #quantity-image {
     @extend mass-image-size;
     background: transparent url("../assets/mass.svg") 0% 0% no-repeat
       padding-box;
@@ -171,8 +171,8 @@ header {
     text-transform: capitalize;
   }
 
-  #LENGTH:hover,
-  #LENGTH-active {
+  #length:hover,
+  #length-active {
     background: #edfdf9;
     box-shadow: $quantityBoxSadow;
     border: 1px solid $lengthColor;
@@ -189,8 +189,8 @@ header {
     }
   }
 
-  #TEMPERATURE:hover,
-  #TEMPERATURE-active {
+  #temperature:hover,
+  #temperature-active {
     background: #ffeef0;
     box-shadow: $quantityBoxSadow;
     border: 1px solid $temperatureColor;
@@ -204,8 +204,8 @@ header {
     }
   }
 
-  #VOLUME:hover,
-  #VOLUME-active {
+  #volume:hover,
+  #volume-active {
     background: #e8ddff;
     box-shadow: $quantityBoxSadow;
     border: 1px solid $volumeColor;
@@ -220,8 +220,8 @@ header {
     }
   }
 
-  #MASS:hover,
-  #MASS-active {
+  #mass:hover,
+  #mass-active {
     background: #e8ddff;
     box-shadow: $quantityBoxSadow;
     border: 1px solid $massColor;
@@ -271,6 +271,7 @@ header {
     border-radius: 3px;
     border: 1px solid $converterBorderColor;
     outline: none;
+    text-transform: capitalize;
   }
 
   #converter-table-name {
@@ -307,29 +308,16 @@ header {
     }
 
     #quantity {
+      width: 90%;
       overflow: auto;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       padding: 5px;
-      height: 45%;
+      height: 25%;
     }
   }
 
-  #converter {
-    margin: 10px;
-  }
-}
-
-@media only screen and (max-height: 500px) {
-  .home {
-    #quantity {
-      height: 40%;
-    }
-  }
-}
-
-@media only screen and (max-width: 650px) {
   #converter {
     display: flex;
     flex-direction: column;
@@ -343,6 +331,14 @@ header {
       flex-direction: column;
       margin-top: 10px;
       width: 85%;
+    }
+  }
+}
+
+@media only screen and (max-height: 500px) {
+  .home {
+    #quantity {
+      height: 40%;
     }
   }
 }

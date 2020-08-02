@@ -45,9 +45,11 @@ class App extends Component {
 
   async getUnits(measurement) {
     let units = await getUnitsOfGivenMeasurementType(measurement);
+    let unitsInLowerCase = units.map(unit => {return unit.toLowerCase()})
+    console.log(unitsInLowerCase);
     let measurementAndUnit = {
-      measurementType: measurement,
-      units: units,
+      measurementType: measurement.toLowerCase(),
+      units: unitsInLowerCase,
     };
     console.log(
       measurementAndUnit.measurementType +
