@@ -13,10 +13,10 @@ function History(props) {
   });
   var tableHeader = (
     <tr>
-      <th>UNIT</th>
-      <th>VALUE</th>
-      <th>REQUIRED UNIT</th>
-      <th>RESULT</th>
+      <th>FROM UNIT</th>
+      <th>FROM VALUE</th>
+      <th>TO UNIT</th>
+      <th>TO VALUE</th>
     </tr>
   );
   return (

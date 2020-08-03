@@ -101,7 +101,7 @@ class Main extends Component {
 
     return (
       <div className="main">
-        <div id="home-text">CHOOSE TYPE</div>
+        <div id="main-text">CHOOSE TYPE</div>
         <div id="quantity">{measurementTypesButtons}</div>
         <div id="converter">
           <Converter

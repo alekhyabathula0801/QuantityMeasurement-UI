@@ -45,7 +45,7 @@ body,
   background-color: $homeBackground;
 }
 
-#loader{
+#loader {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,7 +100,7 @@ header {
   display: inline-block;
   overflow: auto;
 
-  #home-text {
+  #main-text {
     font-size: 12px;
     text-align: left;
     font-weight: 500;
@@ -113,6 +113,7 @@ header {
     display: flex;
     justify-content: space-between;
     height: 25%;
+
     button {
       font: 400 12px $montserratFont;
     }
@@ -285,36 +286,37 @@ header {
 }
 
 @media only screen and (max-width: 650px) {
-  .home {
+  .main {
     width: 100%;
     padding-top: 10px;
 
-    #home-text {
+    #main-text {
       text-align: center;
     }
 
-    #LENGTH,
-    #TEMPERATURE,
-    #VOLUME,
-    #MASS,
-    #LENGTH-active,
-    #TEMPERATURE-active,
-    #MASS-active,
-    #VOLUME-active {
-      width: 150px;
-      height: 100px;
-      padding: 5px;
-      margin: 5px;
-    }
-
     #quantity {
-      width: 90%;
+      width: 97%;
       overflow: auto;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       padding: 5px;
-      height: 25%;
+      height: 40%;
+      margin: 5px;
+    }
+
+    #length,
+    #temperature,
+    #volume,
+    #mass,
+    #length-active,
+    #temperature-active,
+    #volume-active,
+    #mass-active {
+      width: 150px;
+      height: 100px;
+      padding: 5px;
+      margin: 5px;
     }
   }
 
@@ -336,7 +338,7 @@ header {
 }
 
 @media only screen and (max-height: 500px) {
-  .home {
+  .main {
     #quantity {
       height: 40%;
     }
