@@ -13,10 +13,10 @@ class Main extends Component {
       toValue: 0,
     };
     this.setQuantity = this.setQuantity.bind(this);
-    this.setFromValue = this.setFromValue.bind(this);
+    this.setConvertedValueFromFirstUnitToSecondUnit = this.setConvertedValueFromFirstUnitToSecondUnit.bind(this);
     this.setFromUnit = this.setFromUnit.bind(this);
     this.setToUnit = this.setToUnit.bind(this);
-    this.setToValue = this.setToValue.bind(this);
+    this.setConvertedValueFromSecondUnitToFirstUnit = this.setConvertedValueFromSecondUnitToFirstUnit.bind(this);
   }
 
   setQuantity(quantity) {
@@ -27,61 +27,60 @@ class Main extends Component {
         fromUnit: quantity.units[0],
         toUnit: quantity.units[1],
       },
-      () => this.getToResult()
+      () => this.setToValue()
     );
   }
 
   componentDidMount() {
-    this.getToResult();
+    this.setToValue();
   }
 
-  setFromUnit = async (event) => {
-    this.setState({ fromUnit: event.target.value });
-    await this.getToResult();
+  setFromUnit = (event) => {
+    this.setState({ fromUnit: event.target.value }, () => this.setToValue());
   };
 
-  setToUnit = async (event) => {
-    this.setState({ toUnit: event.target.value });
-    await this.getToResult();
+  setToUnit = (event) => {
+    this.setState({ toUnit: event.target.value }, () => this.setToValue());
   };
 
-  setFromValue = async (event) => {
+  setConvertedValueFromFirstUnitToSecondUnit = async (event) => {
     let value = event.target.value;
     let result = await this.getResult(
-      document.getElementById("from-select").value,
+      this.state.fromUnit,
       value,
-      document.getElementById("to-select").value
+      this.state.toUnit
     );
     this.setState({ fromValue: value, toValue: result });
   };
 
-  setToValue = async (event) => {
+  setConvertedValueFromSecondUnitToFirstUnit = async (event) => {
     let value = event.target.value;
     let result = await this.getResult(
-      document.getElementById("to-select").value,
+      this.state.toUnit,
       value,
-      document.getElementById("from-select").value
+      this.state.fromUnit
     );
     this.setState({ fromValue: result, toValue: value });
   };
 
-  async getToResult() {
-    let value = document.getElementById("from-input").value;
+  async setToValue() {
+    let value = this.state.fromValue;
     let result = await this.getResult(
-      document.getElementById("from-select").value,
+      this.state.fromUnit,
       value,
-      document.getElementById("to-select").value
+      this.state.toUnit
     );
     this.setState({ toValue: result });
   }
 
   async getResult(unit, value, requiredUnit) {
-    console.log(unit + " " + value + " " + requiredUnit);
     if (value !== "") {
       let result = await getConvertedValue(unit, value, requiredUnit);
       this.props.updateHistory(unit, value, requiredUnit, result);
+      console.log(unit + " " + value + " " + requiredUnit + " " + result);
       return result;
     } else {
+      console.log(unit + " " + value + " " + requiredUnit + " ");
       return "";
     }
   }
@@ -108,7 +107,7 @@ class Main extends Component {
             name="from"
             units={this.state.currentQuantity.units}
             setUnit={this.setFromUnit}
-            setValue={this.setFromValue}
+            setValue={this.setConvertedValueFromFirstUnitToSecondUnit}
             value={this.state.fromValue}
             selectedUnit={this.state.toUnit}
           />
@@ -117,7 +116,7 @@ class Main extends Component {
             name="to"
             units={this.state.currentQuantity.units}
             setUnit={this.setToUnit}
-            setValue={this.setToValue}
+            setValue={this.setConvertedValueFromSecondUnitToFirstUnit}
             value={this.state.toValue}
             selectedUnit={this.state.fromUnit}
           />
