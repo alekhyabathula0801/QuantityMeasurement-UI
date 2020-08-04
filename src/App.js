@@ -21,7 +21,7 @@ class App extends Component {
       measurementUnits: [],
     };
     this.updateHistory = this.updateHistory.bind(this);
-    this.clearHistory=this.clearHistory.bind(this);
+    this.clearHistory = this.clearHistory.bind(this);
   }
 
   async componentDidMount() {
@@ -46,7 +46,9 @@ class App extends Component {
 
   async getUnits(measurement) {
     let units = await getUnitsOfGivenMeasurementType(measurement);
-    let unitsInLowerCase = units.map(unit => {return unit.toLowerCase()})
+    let unitsInLowerCase = units.map((unit) => {
+      return unit.toLowerCase();
+    });
     console.log(unitsInLowerCase);
     let measurementAndUnit = {
       measurementType: measurement.toLowerCase(),
@@ -84,38 +86,42 @@ class App extends Component {
     );
   }
 
-  clearHistory(){
+  clearHistory() {
     console.log("in clear history");
-    this.setState({historyData:[]});
+    this.setState({ historyData: [] });
     localStorage.removeItem("quantityMeasurementHistory");
   }
 
   render() {
     if (this.state.isLoding) {
       return <div id="loader">Loading ........</div>;
-    } else {
-      return (
-        <div className="App">
-          <Router>
-            <Header />
-            <Route
-              path="/"
-              exact
-              render={() => (
-                <Main
-                  unit={this.state.measurementUnits}
-                  updateHistory={this.updateHistory}
-                />
-              )}
-            />
-            <Route
-              path="/history"
-              render={() => <History historyData={this.state.historyData} clearHistory={this.clearHistory}/>}
-            />
-          </Router>
-        </div>
-      );
     }
+    return (
+      <div className="App">
+        <Router>
+          <Header />
+          <Route
+            path="/"
+            exact
+            render={() => (
+              <Main
+                unit={this.state.measurementUnits}
+                updateHistory={this.updateHistory}
+              />
+            )}
+          />
+          <Route
+            path="/history"
+            render={() => (
+              <History
+                historyData={this.state.historyData}
+                clearHistory={this.clearHistory}
+              />
+            )}
+          />
+        </Router>
+      </div>
+    );
   }
 }
 
