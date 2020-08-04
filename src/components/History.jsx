@@ -21,7 +21,7 @@ function History(props) {
   );
   return (
     <div className="history">
-      <div id="welcome-history">History</div>
+      <div id="history-nav"><button onClick={props.clearHistory}>Clear History</button></div>
       <table id="history-table">
         <thead>{tableHeader}</thead>
         <tbody>{tableBody}</tbody>

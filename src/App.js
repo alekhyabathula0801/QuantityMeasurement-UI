@@ -21,6 +21,7 @@ class App extends Component {
       measurementUnits: [],
     };
     this.updateHistory = this.updateHistory.bind(this);
+    this.clearHistory=this.clearHistory.bind(this);
   }
 
   async componentDidMount() {
@@ -83,6 +84,12 @@ class App extends Component {
     );
   }
 
+  clearHistory(){
+    console.log("in clear history");
+    this.setState({historyData:[]});
+    localStorage.removeItem("quantityMeasurementHistory");
+  }
+
   render() {
     if (this.state.isLoding) {
       return <div id="loader">Loading ........</div>;
@@ -103,7 +110,7 @@ class App extends Component {
             />
             <Route
               path="/history"
-              render={() => <History historyData={this.state.historyData} />}
+              render={() => <History historyData={this.state.historyData} clearHistory={this.clearHistory}/>}
             />
           </Router>
         </div>

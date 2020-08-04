@@ -8,25 +8,40 @@
   overflow: auto;
   font-family: Lato;
 
-  #welcome-history {
+  #history-nav {
     font-size: 1.5vw;
     width: 100%;
     margin-top: 5px;
     background-color: paleturquoise;
-    color: rgb(196, 21, 50);
-    justify-content: center;
-    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    
+    button {
+      margin: 5px;
+      margin-right: 40px;
+      outline: none;
+      cursor: pointer;
+      color: deeppink;
+      border: 1px solid deeppink;
+      justify-content: end;
+      border-radius: 4px;
+      background: #edfdf9;
+      box-shadow: 0px 3px 6px #00000029;
+    }
+    button:focus{
+      border: 1px solid #2e5172;
+      color: #2e5172;
+    }
   }
 
   #history-table {
     overflow: auto;
-    height: 90%;
     width: 85%;
     margin: 5px;
     align-items: center;
     border: 1px solid grey;
     border-collapse: collapse;
-    background-color: white;
   }
 
   td,
