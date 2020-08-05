@@ -2,11 +2,11 @@ import React from "react";
 
 function History(props) {
   console.log("in history")
-  var tableBody = props.historyData.map((data) => {
+  var tableBody = props.historyData.map((data,index) => {
     return (
-      <tr>
-        {Object.values(data).map((cell) => {
-          return <td>{cell}</td>;
+      <tr key={index}>
+        {Object.values(data).map((cell,index) => {
+          return <td key={index}>{cell}</td>;
         })}
       </tr>
     );
@@ -22,10 +22,12 @@ function History(props) {
   return (
     <div className="history">
       <div id="history-nav"><button onClick={props.clearHistory}>Clear History</button></div>
+      <div id="history-table-div">
       <table id="history-table">
         <thead>{tableHeader}</thead>
         <tbody>{tableBody}</tbody>
       </table>
+      </div>
     </div>
   );
 }

@@ -5,7 +5,6 @@
   flex-direction: column;
   align-items: center;
   font-size: 1vw;
-  overflow: auto;
   font-family: Lato;
 
   #history-nav {
@@ -16,7 +15,7 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    
+
     button {
       margin: 5px;
       margin-right: 40px;
@@ -29,19 +28,25 @@
       background: #edfdf9;
       box-shadow: 0px 3px 6px #00000029;
     }
-    button:focus{
+    button:focus {
       border: 1px solid #2e5172;
       color: #2e5172;
     }
   }
 
+  #history-table-div {
+    width: 95%;
+    overflow: auto;
+  }
+
   #history-table {
     overflow: auto;
-    width: 85%;
+    width: 95%;
     margin: 5px;
     align-items: center;
     border: 1px solid grey;
     border-collapse: collapse;
+    background-color: white;
   }
 
   td,
@@ -52,11 +57,11 @@
   tr th {
     font-weight: 600;
     color: red;
-    padding: 3px;
+    padding: 5px;
   }
 
   tr td {
-    padding: 3px;
+    padding: 5px;
     color: blueviolet;
   }
 }
