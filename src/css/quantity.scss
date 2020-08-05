@@ -114,6 +114,7 @@ header {
     display: flex;
     justify-content: space-between;
     height: 25%;
+    margin-bottom: 15px;
 
     button {
       font: 400 12px $montserratFont;
@@ -237,19 +238,28 @@ header {
       color: $massColor;
     }
   }
+
+  #message {
+    height: 4%;
+    font-size: 1.5vw;
+    color: rgba(236, 27, 27, 0.993);
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 #converter {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 15px;
   height: 40%;
 
   #from,
   #to {
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
     width: 45%;
   }
 

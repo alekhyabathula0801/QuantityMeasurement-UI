@@ -11,6 +11,7 @@ class Main extends Component {
       fromUnit: this.props.unit[0].units[0],
       toUnit: this.props.unit[0].units[1],
       toValue: 0,
+      message:'',
     };
     this.setQuantity = this.setQuantity.bind(this);
     this.setConvertedValueFromFirstUnitToSecondUnit = this.setConvertedValueFromFirstUnitToSecondUnit.bind(this);
@@ -26,6 +27,7 @@ class Main extends Component {
         fromValue: 0,
         fromUnit: quantity.units[0],
         toUnit: quantity.units[1],
+        message:'',
       },
       () => this.setToValue()
     );
@@ -74,12 +76,17 @@ class Main extends Component {
   }
 
   async getResult(unit, value, requiredUnit) {
-    if (value !== "") {
+    if(value < 0 && this.state.currentQuantity.measurementType !== "temperature") {
+      this.setState({message: this.state.currentQuantity.measurementType + " cannot be negative"});
+      return '';
+    } else if (value !== "") {
+      this.setState({message:""});
       let result = await getConvertedValue(unit, value, requiredUnit);
       this.props.updateHistory(unit, value, requiredUnit, result);
       console.log(unit + " " + value + " " + requiredUnit + " " + result);
       return result;
     } else {
+      this.setState({message:""});
       console.log(unit + " " + value + " " + requiredUnit + " ");
       return "";
     }
@@ -102,6 +109,7 @@ class Main extends Component {
       <div className="main">
         <div id="main-text">CHOOSE TYPE</div>
         <div id="quantity">{measurementTypesButtons}</div>
+        <div id="message">{this.state.message}</div>
         <div id="converter">
           <Converter
             name="from"
