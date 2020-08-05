@@ -13,7 +13,6 @@ export async function getConvertedValue(unit, value, requiredUnit) {
 }
 
 export async function getAvailableMeasurementTypes() {
-  console.log(url);
   return await axios
     .get(url)
     .then((response) => {

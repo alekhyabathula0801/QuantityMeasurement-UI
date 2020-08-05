@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Header from "./components/Header";
 import "./css/quantity.scss";
 import "./css/history.scss";
+import "./css/page-not-found.scss";
 import Main from "./components/Main";
 import {
   getAvailableMeasurementTypes,
@@ -9,6 +10,7 @@ import {
 } from "./service/service";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import History from "./components/History";
+import PageNotFound from "./components/PageNotFound";
 
 class App extends Component {
   constructor() {
@@ -95,6 +97,8 @@ class App extends Component {
   render() {
     if (this.state.isLoding) {
       return <div id="loader">Loading ........</div>;
+    } if(this.state.quantiyTypes === undefined) {
+      return <PageNotFound/>
     }
     return (
       <div className="App">
