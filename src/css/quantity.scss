@@ -113,7 +113,7 @@ header {
   #quantity {
     display: flex;
     justify-content: space-between;
-    height: 25%;
+    height: 30%;
     margin-bottom: 15px;
 
     button {
@@ -129,7 +129,7 @@ header {
   #temperature-active,
   #volume-active,
   #mass-active {
-    width: 23%;
+    width: 21%;
     height: 100%;
     margin-bottom: 20px;
     display: flex;
@@ -273,6 +273,7 @@ header {
     border-radius: 3px;
     border: 1px solid $converterBorderColor;
     outline: none;
+    font-weight: 600;
   }
 
   #from select,
@@ -352,6 +353,14 @@ header {
   .main {
     #quantity {
       height: 40%;
+    }
+  }
+}
+
+@media only screen and (min-height: 1080px) {
+  .main {
+    #quantity {
+      height: 20%;
     }
   }
 }

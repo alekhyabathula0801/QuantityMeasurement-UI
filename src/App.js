@@ -16,7 +16,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      isLoding: true,
+      isLoading: true,
       quantiyTypes: [],
       historyData:
         JSON.parse(localStorage.getItem("quantityMeasurementHistory")) || [],
@@ -32,7 +32,7 @@ class App extends Component {
     for (let index in this.state.quantiyTypes) {
       await this.getUnits(this.state.quantiyTypes[index]);
     }
-    this.setState({ isLoding: false });
+    this.setState({ isLoading: false });
   }
 
   async getMeasurementType() {
@@ -95,7 +95,7 @@ class App extends Component {
   }
 
   render() {
-    if (this.state.isLoding) {
+    if (this.state.isLoading) {
       return <div id="loader">Loading ........</div>;
     } if(this.state.quantiyTypes === undefined) {
       return <PageNotFound/>
